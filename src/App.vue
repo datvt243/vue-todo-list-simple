@@ -1,28 +1,109 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div id="app" class="container is-flex">
+    <Header :projectName="projectName" />
+    <main class="main-wrapper">
+      <TodoWrapper />
+    </main>
+    <Footer />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+
+import Header from "./components/layout/Header"
+import Footer from "./components/layout/Footer"
+import TodoWrapper from "./components/todo/TodoWrapper"
 
 export default {
-  name: "App",
+  name: "app",
   components: {
-    HelloWorld
-  }
-};
+    Header,
+    Footer,
+    TodoWrapper
+  },
+  data () {
+    return {
+      projectName: "Todo List",
+    }
+  },
+}
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+
+h1, h2, h3, h4, h5 {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
 }
+.eng {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+}
+
+.del {
+  text-decoration: line-through;
+}
+
+.delete {
+  color: red;
+}
+
+#app {
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  padding: 50px 10px 0 10px;
+}
+
+.container.is-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+}
+
+.header-wrapper {
+  margin-bottom: 40px;
+}
+
+.main-wrapper {
+  flex-grow: 1;
+  position: relative;
+}
+
+.footer-wrapper {
+  border-top: 1px solid rgba(0,0,0,.1);
+  padding: 20px 0;
+  text-align: center;
+}
+
+section > *:last-child, div:not(.layout-row) > *:last-child, ul:not(.layout-row) > *:last-child, ol:not(.layout-row) > *:last-child, li > *:last-child, dl > *:last-child, dt > *:last-child, dd > *:last-child, th > *:last-child, td > *:last-child, address > *:last-child, blockquote > *:last-child {
+  margin-bottom: 0;
+}
+
+
+.custom-control-label {
+  cursor: pointer;
+}
+
+
+
+.btn-light.is-active {
+  color: #fff;
+  background-color: #007bff;
+}
+
+.animate-enter {
+  opacity: 0;
+  transform: translateY(-20px)
+}
+.animate-enter-active, .animate-leave-active {
+  transition: all .3s ease
+}
+.animate-leave-to {
+  opacity: 0;
+  transform: translateY(20px)
+}
+
 </style>
+
+
