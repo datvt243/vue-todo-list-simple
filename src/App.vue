@@ -1,10 +1,12 @@
 <template>
-  <div id="app" class="container is-flex">
-    <Header :projectName="projectName" />
-    <main class="main-wrapper">
-      <TodoWrapper />
-    </main>
-    <Footer />
+  <div id="app">
+    <div class="container is-flex">
+      <Header :projectName="projectName" />
+      <main class="main-wrapper">
+        <TodoWrapper />
+      </main>
+      <Footer />
+    </div>
   </div>
 </template>
 
@@ -29,80 +31,76 @@ export default {
 }
 </script>
 
-<style>
+<style lang="sass">
 
-h1, h2, h3, h4, h5 {
-  font-family: "Roboto Slab", serif;
-  font-weight: 700;
-}
-.eng {
-  font-family: "Roboto Slab", serif;
-  font-weight: 700;
-}
+h1, h2, h3, h4, h5 
+  font-family: "Roboto Slab", serif
+  font-weight: 700
 
-.del {
-  text-decoration: line-through;
-}
+.eng 
+  font-family: "Roboto Slab", serif
+  font-weight: 700
 
-.delete {
-  color: red;
-}
+.del 
+  text-decoration: line-through
 
-#app {
-  font-family: "Roboto", sans-serif;
-  color: #333;
-  padding: 50px 10px 0 10px;
-}
+.delete 
+  color: #fff
 
-.container.is-flex {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 100vh;
-}
-
-.header-wrapper {
-  margin-bottom: 40px;
-}
-
-.main-wrapper {
-  flex-grow: 1;
-  position: relative;
-}
-
-.footer-wrapper {
-  border-top: 1px solid rgba(0,0,0,.1);
-  padding: 20px 0;
-  text-align: center;
-}
-
-section > *:last-child, div:not(.layout-row) > *:last-child, ul:not(.layout-row) > *:last-child, ol:not(.layout-row) > *:last-child, li > *:last-child, dl > *:last-child, dt > *:last-child, dd > *:last-child, th > *:last-child, td > *:last-child, address > *:last-child, blockquote > *:last-child {
-  margin-bottom: 0;
-}
-
-
-.custom-control-label {
-  cursor: pointer;
-}
-
-
-
-.btn-light.is-active {
-  color: #fff;
-  background-color: #007bff;
-}
-
-.animate-enter {
-  opacity: 0;
-  transform: translateY(-20px)
-}
-.animate-enter-active, .animate-leave-active {
+.btn
+  border-radius: 0
+  border-width: 0
   transition: all .3s ease
-}
-.animate-leave-to {
-  opacity: 0;
-  transform: translateY(20px)
-}
+
+#app
+  position: relative
+  font-family: "Roboto", sans-serif
+  color: #333
+  padding: 5rem 1rem 0 1rem
+  background: url('./assets/todo.jpg') no-repeat center / cover
+  &:before
+    content: ''
+    pointer-events: none
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    background-color: rgba(0,123,255,.2)
+
+.container
+  &.is-flex 
+    display: flex
+    flex-direction: column
+    justify-content: space-between
+    min-height: calc(100vh - 5rem)
+
+.header-wrapper 
+  margin-bottom: 4rem
+
+.main-wrapper 
+  flex-grow: 1
+  position: relative
+
+.footer-wrapper 
+  border-top: .1rem solid rgba(0,0,0,.1)
+  padding: 2rem 0
+  text-align: center
+
+section, div, ul, ol, li, dl, dt, dd, th, td, address, blockquote
+  > *
+    margin-bottom: 0
+
+.animate
+  &-enter 
+    opacity: 0
+    transform: translateY(-2rem)
+  &-leave-to 
+    opacity: 0
+    transform: translateY(2rem)
+
+  &-enter-active, &-leave-active 
+    transition: all .3s ease
 
 </style>
 

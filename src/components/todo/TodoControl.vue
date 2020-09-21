@@ -1,5 +1,5 @@
 <template>
-  <div class="d-inline clearfix">
+  <div class="clearfix">
     <button type="button" class="btn btn-light" 
       :class="{'is-active' : $store.state.filter == 'all' }" 
       @click="$store.state.filter = 'all'">
@@ -32,6 +32,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="sass">
+
+  .btn
+    margin-right: 1rem
+
+  .btn-light.is-active 
+    color: #fff
+    background-color: #007bff
 
 </style>

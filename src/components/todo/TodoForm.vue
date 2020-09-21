@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'TodoFrom',
+  name: 'TodoForm',
   data () {
     return {
       newTodo : ''
@@ -24,10 +24,16 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="sass">
 
-.doto-form {
-  margin-bottom: 30px;
-}
+  .doto
+    
+    &-form 
+      margin-bottom: 3rem
 
+      .form-control
+        border-radius: 0
+        border-width: 0
+        box-shadow: .3rem .3rem 0 rgba(0, 123, 255, .8)
+  
 </style>

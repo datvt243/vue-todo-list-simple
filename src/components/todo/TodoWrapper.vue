@@ -3,12 +3,16 @@
     <TodoForm @addNewToDo="addNewToDo" />
     <div class="todo-content">
       <div class="clearfix" v-if="listTodo.length">
-        <TodoList 
-          :list="getListToDo" 
-          @editTodo="editTodo" 
-          @canotEdit="canotEdit"
-          @updateToDo="updateToDo" 
-          @deleteToDo="deleteToDo" />
+        <transition-group tag="ul" class="todo-list mb-4" name="animate">
+          <li v-for="(item, index) in getListToDo" :key="index">
+            <TodoItem 
+              :item="item" :index="index"
+              @editTodo="editTodo" 
+              @canotEdit="canotEdit"
+              @updateToDo="updateToDo" 
+              @deleteToDo="deleteToDo" />
+          </li>
+        </transition-group>
         <TodoResult 
           :getNotComplete="getNotComplete" 
           :isCheckAll="isCheckAll" 
@@ -30,7 +34,7 @@
 <script>
 
 import TodoForm from "./TodoForm"
-import TodoList from "./TodoList"
+import TodoItem from "./TodoItem"
 import TodoControl from "./TodoControl"
 import TodoResult from "./TodoResult"
 import TodoFooter from "./TodoFooter"
@@ -39,7 +43,7 @@ export default {
   name: "TodoWrapper",
   components: {
     TodoForm,
-    TodoList,
+    TodoItem,
     TodoControl,
     TodoResult,
     TodoFooter
@@ -83,13 +87,13 @@ export default {
       return this.listTodo
     },
     getNotComplete() {
-      return this.$store.state.notComplete = this.listTodo.filter(item => item.isComplete == false).length
+      return this.listTodo.filter(item => item.isComplete == false).length
     },
     getIDLast() {
       return this.listTodo.length == 0 ? 1 : this.listTodo[this.listTodo.length-1].id
     },
     isCheckAll() {
-      return this.$store.state.isCheckAll = this.getNotComplete == 0
+      return this.getNotComplete == 0
     },
     showBtnClearComplete() {
       return this.listTodo.filter(item => item.isComplete).length
@@ -140,12 +144,22 @@ export default {
 }
 </script>
 
-<style>
+<style lang="sass">
 
-.doto-wrapper {
-  width: 800px;
-  max-width: 100%;
-  margin: 0 auto;
-}
+  .doto
+
+    &-wrapper 
+      width: 80rem
+      max-width: 100%
+      margin: 0 auto
+      padding: 2rem
+      color: #fff
+      background-color: rgba(0, 0, 0, .6)
+
+      hr
+        margin: 
+          top: 1rem
+          bottom: 1rem
+        border-top: .1rem solid rgba(255,255,255,.1)
 
 </style>
